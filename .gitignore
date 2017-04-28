@@ -1,0 +1,25 @@
+*.DS_Store
+*.class
+*~
+*.bak
+*.off
+*.old
+*.java.orig
+
+# Eclipse
+.classpath
+.project
+.settings
+
+# IDEA
+*.iml
+*.ipr
+*.iws
+/.idea/
+
+licenseheader.txt
+nb-configuration.xml
+
+*/target/
+*/nbproject/
+/amisc/

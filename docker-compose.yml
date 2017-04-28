@@ -1,0 +1,64 @@
+version: '2.1'
+services:
+  mysql-keycloak:
+    image: mysql
+    env_file:
+      - ./keycloak-mysql/mysql.envs
+    volumes:
+      - /keycloak/db:/var/lib/mysql
+    networks:
+      - service-tier
+  keycloak-sso:
+    build:
+      context: ./keycloak-mysql
+    image: demo/keycloak-mysql
+    container_name: keycloak-oli
+    env_file:
+      - ./keycloak-mysql/mysql.envs
+    ports:
+      - "9081:8080"
+    networks:
+      - service-tier
+    depends_on:
+     - mysql-keycloak
+  mysql-content:
+    image: mysql
+    env_file: ../content-service/service.envs
+    ports:
+      - "33382:3306"
+    networks:
+      - service-tier
+  content:
+    build:
+      context: ../content-service
+    image: oli/content-service
+    container_name: content-service
+    env_file: ../content-service/service.envs
+    environment:
+      - MYSQL_ADDRESS=mysql-content
+    ports:
+      - "8110:8080"
+      - "9110:9990"
+    volumes:
+      - /oli_content/course_content_xml:/oli/course_content_xml
+      - /oli_content/course_content_volume:/oli/course_content_volume
+    networks:
+      - service-tier
+    depends_on:
+      - keycloak-sso
+      - mysql-content
+  nginx-proxy:
+    build:
+      context: ./nginx-proxy
+    container_name: oli-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /oli_content/site:/usr/share/nginx/html
+    networks:
+      - service-tier
+    depends_on:
+     - content
+networks:
+  service-tier:
+    driver: bridge
