@@ -1,2 +1,2 @@
 # editor-base
-A top level repository hosting assets OLI backend depends on
+A top level repository containing OLI framework assets 
