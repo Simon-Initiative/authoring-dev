@@ -15,3 +15,9 @@ RUN java -jar /usr/share/java/saxon.jar \
 	-o:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml;
 
 RUN rm /opt/jboss/keycloak/enableProxy.xsl
+
+USER root
+RUN mkdir /export && chown -R jboss:0 /export
+USER jboss
+# -Dkeycloak.migration.realmName=oli_security
+CMD ["-b", "0.0.0.0","-Dkeycloak.migration.action=export -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/export"]
