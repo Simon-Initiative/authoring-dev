@@ -1,0 +1,7 @@
+{
+  "realm": "oli_security",
+  "auth-server-url": "http://10.0.0.9/auth",
+  "ssl-required": "external",
+  "resource": "content_client",
+  "public-client": true
+}

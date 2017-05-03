@@ -1,0 +1,7 @@
+{
+  "realm": "oli_security",
+  "auth-server-url": "https://shattrath.oli.cmu.edu/auth",
+  "ssl-required": "external",
+  "resource": "content_client",
+  "public-client": true
+}
