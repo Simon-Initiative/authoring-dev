@@ -47,18 +47,28 @@ services:
     depends_on:
       - keycloak-sso
       - mysql-content
-  nginx-proxy:
-    build:
-      context: ./nginx-proxy
+  editor:
+    container_name: editor
+    build: ../course-editor
+    ports:
+      - "9000:9000"
+    networks:
+      - service-tier
+    volumes:
+      - ../course-editor:/app
+      - ../course-editor/dist:/app/dist
+      - /app/node_modules
+    command: gulp dev
+  haproxy-proxy:
+    build: ../course-editor/proxy/haproxy
     container_name: oli-proxy
     ports:
       - "80:80"
-    volumes:
-      - /oli_content/site:/usr/share/nginx/html
     networks:
       - service-tier
     depends_on:
-     - content
+      - content
+      - editor
 networks:
   service-tier:
     driver: bridge
