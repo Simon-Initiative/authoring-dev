@@ -61,8 +61,8 @@ services:
       - ../course-editor/dist:/app/dist
       - /app/node_modules
     command: gulp dev
-  haproxy-proxy:
-    build: ../course-editor/proxy/haproxy
+  ha-proxy:
+    build: ./ha-proxy
     container_name: oli-proxy
     ports:
       - "80:80"
