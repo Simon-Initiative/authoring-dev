@@ -925,7 +925,17 @@
     "authorizationSettings" : {
       "allowRemoteResourceManagement" : true,
       "policyEnforcementMode" : "ENFORCING",
-      "resources" : [ ],
+      "resources" : [ {
+        "name" : "2c9b80865c0c5b7b015c0cc749a00a19",
+        "uri" : "/packages/2c9b80865c0c5b7b015c0cc749a00a19",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      } ],
       "policies" : [ {
         "name" : "package_admin_access",
         "description" : "Policy that aggregates content package admin access",
