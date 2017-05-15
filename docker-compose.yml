@@ -61,7 +61,7 @@ services:
       - ../course-editor/dist:/app/dist
       - /app/node_modules
     command: gulp dev
-  raffmac.local:
+  dev.local:
     build: ./ha-proxy
     container_name: oli-proxy
     ports:
