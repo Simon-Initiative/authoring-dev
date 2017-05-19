@@ -16,6 +16,10 @@ RUN java -jar /usr/share/java/saxon.jar \
 
 RUN rm /opt/jboss/keycloak/enableProxy.xsl
 
+COPY themes/ /opt/jboss/keycloak/themes/
+
+#RUN mkdir /opt/jboss/keycloak/themes/oli_theme
+
 USER root
 RUN mkdir /export && chown -R jboss:0 /export
 USER jboss
