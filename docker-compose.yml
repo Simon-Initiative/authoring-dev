@@ -17,7 +17,6 @@ services:
       - ./keycloak-mysql/mysql.envs
     volumes:
       - /keycloak/export:/export
-      - /keycloak/themes:/opt/jboss/keycloak/themes/oli_theme
     ports:
       - "9081:8080"
     networks:
