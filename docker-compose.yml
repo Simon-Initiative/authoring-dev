@@ -44,6 +44,7 @@ services:
     volumes:
       - /oli_content/course_content_xml:/oli/course_content_xml
       - /oli_content/course_content_volume:/oli/course_content_volume
+      - /oli_content/webcontent:/oli/webcontent
     networks:
       - service-tier
     depends_on:
@@ -66,6 +67,8 @@ services:
     container_name: oli-nginx
     ports:
       - "8112:80"
+    volumes:
+      - /oli_content/webcontent:/oli/webcontent/webcontents
     networks:
       - service-tier
   dev.local:
