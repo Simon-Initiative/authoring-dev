@@ -12,7 +12,7 @@ services:
     networks:
       - service-tier
   keycloak-sso:
-    build: ./keycloak
+    build: ./keycloak-mysql
     image: oli/keycloak-mysql
     container_name: oli-keycloak
     env_file:
