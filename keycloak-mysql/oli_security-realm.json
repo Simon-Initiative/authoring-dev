@@ -2,7 +2,7 @@
   "id" : "oli_security",
   "realm" : "oli_security",
   "displayName" : "OLI Security",
-  "notBefore" : 0,
+  "notBefore" : 1494872099,
   "revokeRefreshToken" : false,
   "accessTokenLifespan" : 300,
   "accessTokenLifespanForImplicitFlow" : 900,
@@ -926,8 +926,8 @@
       "allowRemoteResourceManagement" : true,
       "policyEnforcementMode" : "ENFORCING",
       "resources" : [ {
-        "name" : "2c9b80865c0c5b7b015c0cc749a00a19",
-        "uri" : "/packages/2c9b80865c0c5b7b015c0cc749a00a19",
+        "name" : "2c9b80875c7615c8015c7653c5910066",
+        "uri" : "/packages/2c9b80875c7615c8015c7653c5910066",
         "type" : "urn:content-service:resources:content_package",
         "scopes" : [ {
           "name" : "urn:content-service:scopes:view_material"
@@ -1393,7 +1393,7 @@
     "contentSecurityPolicy" : "frame-src 'self'"
   },
   "smtpServer" : { },
-  "loginTheme" : "keycloak",
+  "loginTheme" : "oli_theme",
   "accountTheme" : "keycloak",
   "eventsEnabled" : false,
   "eventsListeners" : [ "jboss-logging" ],
@@ -1828,5 +1828,5 @@
     "_browser_header.contentSecurityPolicy" : "frame-src 'self'",
     "waitIncrementSeconds" : "60"
   },
-  "keycloakVersion" : "3.0.0.Final"
+  "keycloakVersion" : "3.1.0.Final"
 }

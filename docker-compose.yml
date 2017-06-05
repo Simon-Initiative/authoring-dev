@@ -2,57 +2,62 @@ version: '2.1'
 services:
   mysql-keycloak:
     image: mysql
+    container_name: oli-mysql-keycloak
     env_file:
       - ./keycloak-mysql/mysql.envs
     volumes:
-      - /keycloak/db:/var/lib/mysql
+      - /oli/databases/keycloak:/var/lib/mysql
+    ports:
+      - "33206:3306"
     networks:
       - service-tier
   keycloak-sso:
-    build:
-      context: ./keycloak-mysql
-    image: demo/keycloak-mysql
-    container_name: keycloak-oli
+    build: ./keycloak-mysql
+    image: oli/keycloak-mysql
+    container_name: oli-keycloak
     env_file:
       - ./keycloak-mysql/mysql.envs
     volumes:
-      - /keycloak/export:/export
-    ports:
-      - "9081:8080"
+      - /oli/databases/keycloak_dump:/export
     networks:
       - service-tier
     depends_on:
-     - mysql-keycloak
+      - mysql-keycloak
   mysql-content:
     image: mysql
-    env_file: ../content-service/service.envs
+    container_name: oli-mysql-content-service
+    env_file:
+      - ../content-service/service.envs
+    volumes:
+      - /oli/databases/content:/var/lib/mysql
     ports:
       - "33382:3306"
     networks:
       - service-tier
   content:
-    build:
-      context: ../content-service
+    build: ../content-service
     image: oli/content-service
     container_name: content-service
-    env_file: ../content-service/service.envs
+    env_file:
+      - ../content-service/service.envs
     environment:
       - MYSQL_ADDRESS=mysql-content
     ports:
       - "8110:8080"
       - "9110:9990"
     volumes:
-      - /oli_content/course_content_xml:/oli/course_content_xml
-      - /oli_content/course_content_volume:/oli/course_content_volume
-      - /oli_content/webcontent:/oli/webcontent
+      - /oli/content/course_content_xml:/oli/course_content_xml
+      - /oli/content/course_content_volume:/oli/course_content_volume
+      - /oli/content/webcontent:/oli/webcontent
     networks:
       - service-tier
     depends_on:
       - keycloak-sso
       - mysql-content
   editor:
-    container_name: editor
+    container_name: oli-editor
     build: ../course-editor
+    image: oli/editor
     ports:
       - "9000:9000"
     networks:
@@ -64,18 +69,19 @@ services:
     command: gulp dev
   nginx:
     build: ./nginx
+    image: oli/nginx
     container_name: oli-nginx
-    ports:
-      - "8112:80"
     volumes:
-      - /oli_content/webcontent:/oli/webcontent/webcontents
+      - /oli/content/webcontent:/oli/webcontent/webcontents
     networks:
       - service-tier
   dev.local:
     build: ./ha-proxy
-    container_name: oli-proxy
+    image: oli/haproxy
+    container_name: oli-haproxy
     ports:
       - "80:80"
+      - "443:443"
     networks:
       - service-tier
     depends_on:

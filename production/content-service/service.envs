@@ -1,0 +1,13 @@
+# MySQL configuration
+MYSQL_ROOT_PASSWORD=password
+MYSQL_USER=content
+MYSQL_PASSWORD=password2
+MYSQL_DATABASE=content_db
+# Wildfly configuration
+adminuser=admin
+adminpass=Admin#70365
+managementport=9110
+serverport=8110
+keycloakadmin=admin
+keycloakpass=admin
+production=true

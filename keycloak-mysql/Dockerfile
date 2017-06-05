@@ -18,13 +18,13 @@ RUN rm /opt/jboss/keycloak/enableProxy.xsl
 
 COPY themes/ /opt/jboss/keycloak/themes/
 
-#RUN mkdir /opt/jboss/keycloak/themes/oli_theme
-
 USER root
 RUN mkdir /export && chown -R jboss:0 /export
 USER jboss
-# -Dkeycloak.migration.realmName=oli_security -Dkeycloak.migration.strategy=IGNORE_EXISTING
+# -Dkeycloak.migration.strategy=IGNORE_EXISTING
 CMD ["-b", "0.0.0.0","-Dkeycloak.migration.action=export", \
     "-Dkeycloak.migration.realmName=oli_security", \
     "-Dkeycloak.migration.provider=dir", \
-    "-Dkeycloak.migration.dir=/export"]
+    "-Dkeycloak.migration.dir=/export", \
+    "-Dkeycloak.migration.usersExportStrategy=DIFFERENT_FILES", \
+    "-Dkeycloak.migration.usersPerFile=1"]
