@@ -25,7 +25,7 @@ services:
     image: mysql
     container_name: oli-mysql-content-service
     env_file:
-      - ../content-service/service.envs
+      - ./content-service/service.envs
     volumes:
       - /oli/databases/content:/var/lib/mysql
     ports:
