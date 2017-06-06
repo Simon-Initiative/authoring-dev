@@ -11,6 +11,11 @@ services:
       - "33206:3306"
     networks:
       - service-tier
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-mysql-keycloak"
   keycloak-sso:
     build: ./keycloak-mysql
     image: oli/keycloak-mysql
@@ -21,6 +26,11 @@ services:
       - service-tier
     depends_on:
       - mysql-keycloak
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-keycloak"
   mysql-content:
     image: mysql
     container_name: oli-mysql-content-service
@@ -32,6 +42,11 @@ services:
       - "33306:3306"
     networks:
       - service-tier
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-mysql-content-service"
   content:
     build: ./content-service
     image: oli/content-service
@@ -52,6 +67,11 @@ services:
     depends_on:
       - keycloak-sso
       - mysql-content
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.content-service"
   nginx:
     build: ./nginx
     image: oli/nginx
@@ -60,6 +80,11 @@ services:
       - /oli/content/webcontent:/oli/webcontent/webcontents
     networks:
       - service-tier
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-nginx"
   shattrath.oli.cmu.edu:
     build: ./ha-proxy
     image: oli/haproxy
@@ -71,6 +96,11 @@ services:
       - service-tier
     depends_on:
       - content
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-haproxy"
 networks:
   service-tier:
     driver: bridge
