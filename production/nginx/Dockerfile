@@ -1,2 +1,4 @@
-FROM dalaran.oli.cmu.edu:9993/nexus/repository/docker/oli/nginx
-COPY assets/ /usr/share/nginx/html/assets/
+FROM nginx:alpine
+RUN mkdir -p /oli/webcontent/webcontents
+COPY ./default.conf /etc/nginx/conf.d
+COPY ./dist/ /usr/share/nginx/html/
