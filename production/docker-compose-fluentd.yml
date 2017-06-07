@@ -85,7 +85,7 @@ services:
       options:
         fluentd-address: localhost:24224
         tag: "oli.oli-nginx"
-  shattrath.oli.cmu.edu:
+  dev.local:
     build: ./ha-proxy
     image: oli/haproxy
     container_name: oli-haproxy

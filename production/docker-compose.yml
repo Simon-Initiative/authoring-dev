@@ -60,7 +60,7 @@ services:
       - /oli/content/webcontent:/oli/webcontent/webcontents
     networks:
       - service-tier
-  shattrath.oli.cmu.edu:
+  dev.local:
     build: ./ha-proxy
     image: oli/haproxy
     container_name: oli-haproxy
