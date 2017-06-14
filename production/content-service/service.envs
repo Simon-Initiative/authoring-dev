@@ -1,11 +1,14 @@
+# Remember to use secure Passwords
 # MySQL configuration
 MYSQL_ROOT_PASSWORD=password
 MYSQL_USER=content
 MYSQL_PASSWORD=password2
 MYSQL_DATABASE=content_db
 # Wildfly configuration
+protocol=http://
+serverurl=dev.local
 adminuser=admin
-adminpass=Admin#70365
+adminpass=password
 managementport=9110
 serverport=8110
 keycloakadmin=admin
