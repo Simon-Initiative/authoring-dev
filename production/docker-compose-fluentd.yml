@@ -7,6 +7,7 @@ services:
       - ./keycloak-mysql/keycloak.envs
     volumes:
       - /oli/databases/keycloak:/var/lib/mysql
+      - /oli/databases/keycloak_conf:/etc/mysql/conf.d
     ports:
       - "33206:3306"
     networks:
@@ -38,6 +39,7 @@ services:
       - ./content-service/service.envs
     volumes:
       - /oli/databases/content:/var/lib/mysql
+      - /oli/databases/content_conf:/etc/mysql/conf.d
     ports:
       - "33306:3306"
     networks:
