@@ -27,7 +27,10 @@ RUN mkdir -p /oli/course_content_xml \
     && mkdir /oli/course_content_volume \
     && mkdir /oli/webcontent \
     && mkdir /oli/service_config \
-    && chown -R jboss:0 /oli
+    && chown -R jboss:0 /oli \
+    && chmod a+rwx -R /oli/course_content_xml \
+    && chmod a+rwx -R /oli/course_content_volume \
+    && chmod a+rwx -R /oli/webcontent
 
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
