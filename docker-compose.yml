@@ -50,6 +50,7 @@ services:
     volumes:
       - /oli/content/course_content_xml:/oli/course_content_xml
       - /oli/content/course_content_volume:/oli/course_content_volume
+      - /oli/content/course_content_out:/oli/course_content_out
       - /oli/content/webcontent:/oli/webcontent
     networks:
       - service-tier
