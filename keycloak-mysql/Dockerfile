@@ -1,4 +1,5 @@
-FROM dalaran.oli.cmu.edu:9993/nexus/repository/docker/oli/keycloak-mysql
+FROM olisimon/keycloak-mysql
+#FROM dalaran.oli.cmu.edu:9993/nexus/repository/docker/oli/keycloak-mysql
 #FROM jboss/keycloak-mysql:3.2.1.Final
 #
 #ENV KEYCLOAK_LOGLEVEL DEBUG
