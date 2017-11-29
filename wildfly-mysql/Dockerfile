@@ -10,14 +10,15 @@ RUN mkdir -p ${JBOSS_HOME}/modules/system/layers/base/com/mysql/jdbc/main; cd ${
 ADD module.xml ${JBOSS_HOME}/modules/system/layers/base/com/mysql/jdbc/main/
 
 RUN cd $JBOSS_HOME \
-    && curl -O https://downloads.jboss.org/keycloak/3.0.0.Final/adapters/keycloak-oidc/keycloak-wildfly-adapter-dist-3.0.0.Final.tar.gz \
-    && tar xf keycloak-wildfly-adapter-dist-3.0.0.Final.tar.gz \
-    && rm keycloak-wildfly-adapter-dist-3.0.0.Final.tar.gz \
+    && curl -O https://downloads.jboss.org/keycloak/3.1.0.Final/adapters/keycloak-oidc/keycloak-wildfly-adapter-dist-3.1.0.Final.tar.gz \
+    && tar xf keycloak-wildfly-adapter-dist-3.1.0.Final.tar.gz \
+    && rm keycloak-wildfly-adapter-dist-3.1.0.Final.tar.gz \
     && ${JBOSS_HOME}/bin/jboss-cli.sh --file=${JBOSS_HOME}/bin/adapter-install-offline.cli \
     && cd $HOME
 
 USER root
 RUN yum -y upgrade
+RUN yum -y install less
 
 ADD execute.sh ${JBOSS_HOME}/
 ADD wait-for-it.sh ${JBOSS_HOME}/
