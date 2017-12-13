@@ -1,6 +1,6 @@
 FROM olisimon/keycloak-mysql
 #FROM dalaran.oli.cmu.edu:9993/nexus/repository/docker/oli/keycloak-mysql
-#FROM jboss/keycloak-mysql:3.2.1.Final
+#FROM jboss/keycloak-mysql:3.2.0.Final
 #
 #ENV KEYCLOAK_LOGLEVEL DEBUG
 #
@@ -25,10 +25,10 @@ FROM olisimon/keycloak-mysql
 #USER jboss
 #
 ## -Dkeycloak.migration.strategy=IGNORE_EXISTING
-CMD ["-b", "0.0.0.0"]
-#,"-Dkeycloak.migration.action=export", \
-#    "-Dkeycloak.migration.realmName=oli_security", \
-#    "-Dkeycloak.migration.provider=dir", \
-#    "-Dkeycloak.migration.dir=/export", \
-#    "-Dkeycloak.migration.usersExportStrategy=DIFFERENT_FILES", \
-#    "-Dkeycloak.migration.usersPerFile=1"]
+#CMD ["-b", "0.0.0.0"]
+##,"-Dkeycloak.migration.action=export", \
+##    "-Dkeycloak.migration.realmName=oli_security", \
+##    "-Dkeycloak.migration.provider=dir", \
+##    "-Dkeycloak.migration.dir=/export", \
+##    "-Dkeycloak.migration.usersExportStrategy=DIFFERENT_FILES", \
+##    "-Dkeycloak.migration.usersPerFile=1"]
