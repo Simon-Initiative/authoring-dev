@@ -47,6 +47,7 @@ services:
     ports:
       - "8110:8080"
       - "9110:9990"
+      - "8787:8787"  # for remote debugging
     volumes:
       - /oli/content/course_content_xml:/oli/course_content_xml
       - /oli/content/course_content_volume:/oli/course_content_volume
