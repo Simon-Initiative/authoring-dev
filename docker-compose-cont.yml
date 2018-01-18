@@ -1,0 +1,29 @@
+version: '2.1'
+services:
+  mysql-keycloak:
+    image: mysql
+    container_name: oli-mysql-keycloak
+    env_file:
+      - ./keycloak-mysql/keycloak.envs
+    volumes:
+      - /oli/databases/keycloak:/var/lib/mysql
+      - /oli/databases/keycloak_conf:/etc/mysql/conf.d
+    ports:
+      - "33206:3306"
+    networks:
+      - service-tier
+  keycloak-sso:
+    build: ./keycloak-mysql
+    image: oli/keycloak-mysql
+    container_name: oli-keycloak
+    env_file:
+      - ./keycloak-mysql/keycloak.envs
+#    volumes:
+#      - /oli/databases/keycloak_dump:/export
+    networks:
+      - service-tier
+    depends_on:
+      - mysql-keycloak
+networks:
+  service-tier:
+    driver: bridge
