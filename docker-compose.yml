@@ -69,13 +69,14 @@ services:
       - ../course-editor:/app
       - ../course-editor/dist:/app/dist
       - /app/node_modules
-    command: gulp dev
+    command: npm run dev
   nginx:
     build: ./nginx
     image: oli/nginx
     container_name: oli-nginx
     volumes:
       - /oli/content/webcontent:/oli/webcontent/webcontents
+      - ../course-editor/dist:/oli/course-editor/dist
     networks:
       - service-tier
   dev.local:
