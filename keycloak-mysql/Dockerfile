@@ -1,6 +1,8 @@
 FROM olisimon/keycloak-mysql
 #FROM dalaran.oli.cmu.edu:9993/nexus/repository/docker/oli/keycloak-mysql
 #FROM jboss/keycloak-mysql:3.2.0.Final
+## One below is the current version in effect
+#FROM jboss/keycloak-mysql:3.1.0.Final
 #
 #ENV KEYCLOAK_LOGLEVEL DEBUG
 #
