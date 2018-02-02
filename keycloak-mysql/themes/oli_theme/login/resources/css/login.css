@@ -4,10 +4,16 @@
     background: #fff;
 }
 
+.alert-warning {
+    background-color: #ffffff;
+    border-color: #cc0000;
+    color: #333333 !important;
+}
+
 .alert-error {
     background-color: #ffffff;
     border-color: #cc0000;
-    color: #333333;
+    color: #333333 !important;
 }
 
 #kc-locale ul {
