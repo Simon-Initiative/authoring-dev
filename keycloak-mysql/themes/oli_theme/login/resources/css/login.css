@@ -16,6 +16,16 @@
     color: #333333 !important;
 }
 
+.alert-success {
+    background-color: #ffffff;
+    border-color: #3f9c35;
+    color: #333333 !important;
+}
+
+.login-pf body .container {
+    color: #333333;
+}
+
 #kc-locale ul {
     display: none;
     position: absolute;
