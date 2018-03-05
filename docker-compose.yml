@@ -1,15 +1,16 @@
 version: '3.1'
 services:
   mysql-keycloak:
-    image: mysql
+    build: ./mysql
+    image: oli/mysql
     container_name: oli-mysql-keycloak
     env_file:
       - ./keycloak-mysql/keycloak.envs
     volumes:
       - /oli/databases/keycloak:/var/lib/mysql
       - /oli/databases/keycloak_conf:/etc/mysql/conf.d
-    ports:
-      - "33206:3306"
+#    ports:
+#      - "33206:3306"
     networks:
       - service-tier
   keycloak-sso:
@@ -18,22 +19,23 @@ services:
     container_name: oli-keycloak
     env_file:
       - ./keycloak-mysql/keycloak.envs
-#    volumes:
-#      - /oli/databases/keycloak_dump:/export
+    volumes:
+      - /oli/databases/keycloak_dump:/export
     networks:
       - service-tier
     depends_on:
       - mysql-keycloak
   mysql-content:
-    image: mysql
+    build: ./mysql
+    image: oli/mysql
     container_name: oli-mysql-content-service
     env_file:
       - ../content-service/service.envs
     volumes:
       - /oli/databases/content:/var/lib/mysql
       - /oli/databases/content_conf:/etc/mysql/conf.d
-    ports:
-      - "33382:3306"
+#    ports:
+#      - "33382:3306"
     networks:
       - service-tier
   content:
@@ -45,7 +47,7 @@ services:
     environment:
       - MYSQL_ADDRESS=mysql-content
     ports:
-      - "8110:8080"
+#      - "8110:8080"
       - "9110:9990"
       - "8787:8787"  # for remote debugging
     volumes:
@@ -62,8 +64,8 @@ services:
     container_name: oli-editor
     build: ../course-editor
     image: oli/editor
-    ports:
-      - "9000:9000"
+#    ports:
+#      - "9000:9000"
     networks:
       - service-tier
     volumes:
@@ -80,6 +82,12 @@ services:
       - ../course-editor/dist:/oli/course-editor/dist
     networks:
       - service-tier
+  ssh-server:
+    build: ./ssh-server
+    image: oli/ssh
+    container_name: oli-ssh
+    networks:
+      - service-tier
   dev.local:
     build: ./ha-proxy
     image: oli/haproxy
@@ -87,11 +95,13 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "2222:2222"
     networks:
       - service-tier
     depends_on:
       - content
       - editor
+      - ssh-server
 networks:
   service-tier:
     driver: bridge
