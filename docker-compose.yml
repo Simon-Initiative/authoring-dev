@@ -9,8 +9,6 @@ services:
     volumes:
       - /oli/databases/keycloak:/var/lib/mysql
       - /oli/databases/keycloak_conf:/etc/mysql/conf.d
-#    ports:
-#      - "33206:3306"
     networks:
       - service-tier
   keycloak-sso:
@@ -34,8 +32,6 @@ services:
     volumes:
       - /oli/databases/content:/var/lib/mysql
       - /oli/databases/content_conf:/etc/mysql/conf.d
-#    ports:
-#      - "33382:3306"
     networks:
       - service-tier
   content:
@@ -47,7 +43,6 @@ services:
     environment:
       - MYSQL_ADDRESS=mysql-content
     ports:
-#      - "8110:8080"
       - "9110:9990"
       - "8787:8787"  # for remote debugging
     volumes:
@@ -64,8 +59,6 @@ services:
     container_name: oli-editor
     build: ../course-editor
     image: oli/editor
-#    ports:
-#      - "9000:9000"
     networks:
       - service-tier
     volumes:
