@@ -58,6 +58,8 @@ services:
     container_name: oli-editor
     build: ../course-editor
     image: oli/editor
+    ports:
+      - "9000:9000"
     networks:
       - service-tier
     volumes:
