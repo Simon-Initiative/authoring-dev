@@ -43,12 +43,11 @@ services:
     environment:
       - MYSQL_ADDRESS=mysql-content
     ports:
-      - "9110:9990"
+      - "9110:9990"  # for remote deployment
       - "8787:8787"  # for remote debugging
     volumes:
       - /oli/content/course_content_xml:/oli/course_content_xml
       - /oli/content/course_content_volume:/oli/course_content_volume
-      - /oli/content/course_content_out:/oli/course_content_out
       - /oli/content/webcontent:/oli/webcontent
     networks:
       - service-tier
@@ -76,9 +75,13 @@ services:
     networks:
       - service-tier
   ssh-server:
-    build: ./ssh-server
-    image: oli/ssh
-    container_name: oli-ssh
+    build:
+      context: ./ssh-server
+      dockerfile: Dockerfile-dev
+    image: oli/ssh-server
+    container_name: oli-ssh-server
+    env_file:
+      - ./ssh-server/ssh.envs
     networks:
       - service-tier
   dev.local:
