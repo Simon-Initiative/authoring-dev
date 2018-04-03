@@ -27,10 +27,11 @@ RUN mkdir /export && chown -R jboss:0 /export
 USER jboss
 
 # -Dkeycloak.migration.strategy=IGNORE_EXISTING
-CMD ["-b", "0.0.0.0", "-Dkeycloak.migration.action=import", \
-    "-Dkeycloak.migration.realmName=oli_security", \
-    "-Dkeycloak.migration.provider=dir", \
-    "-Dkeycloak.migration.dir=/export", \
-    "-Dkeycloak.migration.usersExportStrategy=DIFFERENT_FILES", \
-    "-Dkeycloak.migration.usersPerFile=1", \
-    "-Dkeycloak.migration.strategy=IGNORE_EXISTING"]
+CMD ["-b", "0.0.0.0"]
+#, "-Dkeycloak.migration.action=import", \
+#    "-Dkeycloak.migration.realmName=oli_security", \
+#    "-Dkeycloak.migration.provider=dir", \
+#    "-Dkeycloak.migration.dir=/export", \
+#    "-Dkeycloak.migration.usersExportStrategy=DIFFERENT_FILES", \
+#    "-Dkeycloak.migration.usersPerFile=1", \
+#    "-Dkeycloak.migration.strategy=IGNORE_EXISTING"]
