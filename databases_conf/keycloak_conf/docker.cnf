@@ -1,3 +1,4 @@
 [mysqld]
 skip-host-cache
 skip-name-resolve
+transaction_isolation=READ-COMMITTED

@@ -4,7 +4,7 @@
   "displayName" : "OLI Security",
   "notBefore" : 1494872099,
   "revokeRefreshToken" : false,
-  "accessTokenLifespan" : 300,
+  "accessTokenLifespan" : 18000,
   "accessTokenLifespanForImplicitFlow" : 900,
   "ssoSessionIdleTimeout" : 1800,
   "ssoSessionMaxLifespan" : 36000,
@@ -133,7 +133,12 @@
         "name" : "view-clients",
         "description" : "${role_view-clients}",
         "scopeParamRequired" : false,
-        "composite" : false,
+        "composite" : true,
+        "composites" : {
+          "client" : {
+            "realm-management" : [ "query-clients" ]
+          }
+        },
         "clientRole" : true,
         "containerId" : "e8cc5331-b911-4bad-960e-766c0b9df58f"
       }, {
@@ -214,9 +219,23 @@
         "clientRole" : true,
         "containerId" : "e8cc5331-b911-4bad-960e-766c0b9df58f"
       }, {
+        "id" : "4cca36ac-8698-4938-926a-28f3c43cb6e9",
+        "name" : "query-clients",
+        "scopeParamRequired" : false,
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "e8cc5331-b911-4bad-960e-766c0b9df58f"
+      }, {
         "id" : "6038f970-57cb-4d02-8af2-f4bb45b4d2e1",
         "name" : "view-events",
         "description" : "${role_view-events}",
+        "scopeParamRequired" : false,
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "e8cc5331-b911-4bad-960e-766c0b9df58f"
+      }, {
+        "id" : "20a7c69d-8625-4469-aae0-23b9152765a1",
+        "name" : "query-groups",
         "scopeParamRequired" : false,
         "composite" : false,
         "clientRole" : true,
@@ -230,11 +249,23 @@
         "clientRole" : true,
         "containerId" : "e8cc5331-b911-4bad-960e-766c0b9df58f"
       }, {
+        "id" : "58925331-e657-472e-8404-f7b4cd169147",
+        "name" : "query-users",
+        "scopeParamRequired" : false,
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "e8cc5331-b911-4bad-960e-766c0b9df58f"
+      }, {
         "id" : "56a9bf5c-3042-4f25-aab4-ad630c1657f8",
         "name" : "view-users",
         "description" : "${role_view-users}",
         "scopeParamRequired" : false,
-        "composite" : false,
+        "composite" : true,
+        "composites" : {
+          "client" : {
+            "realm-management" : [ "query-groups", "query-users" ]
+          }
+        },
         "clientRole" : true,
         "containerId" : "e8cc5331-b911-4bad-960e-766c0b9df58f"
       }, {
@@ -294,7 +325,6 @@
   "groups" : [ ],
   "defaultRoles" : [ "uma_authorization", "offline_access", "user" ],
   "requiredCredentials" : [ "password" ],
-  "passwordPolicy" : "hashIterations(20000)",
   "otpPolicyType" : "totp",
   "otpPolicyAlgorithm" : "HmacSHA1",
   "otpPolicyInitialCounter" : 0,
@@ -926,8 +956,528 @@
       "allowRemoteResourceManagement" : true,
       "policyEnforcementMode" : "ENFORCING",
       "resources" : [ {
-        "name" : "2c9b80875c7615c8015c7653c5910066",
-        "uri" : "/packages/2c9b80875c7615c8015c7653c5910066",
+        "name" : "2c9280866100783101610163e0d90010",
+        "uri" : "/packages/2c9280866100783101610163e0d90010",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928087601ee14301601ee7d72b0000",
+        "uri" : "/packages/2c928087601ee14301601ee7d72b0000",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719e2eb0038b",
+        "uri" : "/packages/2c92808661718eba0161719e2eb0038b",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c9280866169648501616b559ed80002",
+        "uri" : "/packages/2c9280866169648501616b559ed80002",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c9280865f824b29015f82be01f60012",
+        "uri" : "/packages/2c9280865f824b29015f82be01f60012",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928087601e5d6501601e7420eb0001",
+        "uri" : "/packages/2c928087601e5d6501601e7420eb0001",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719ff2320b76",
+        "uri" : "/packages/2c92808661718eba0161719ff2320b76",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928086616dfd8001616e2545e20070",
+        "uri" : "/packages/2c928086616dfd8001616e2545e20070",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928086601f2dd101601f64829f003e",
+        "uri" : "/packages/2c928086601f2dd101601f64829f003e",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719fb4e40b5d",
+        "uri" : "/packages/2c92808661718eba0161719fb4e40b5d",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928086601f2dd101601f69887f003f",
+        "uri" : "/packages/2c928086601f2dd101601f69887f003f",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c9280866176aaf4016176af61b00000",
+        "uri" : "/packages/2c9280866176aaf4016176af61b00000",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719f995c0b4d",
+        "uri" : "/packages/2c92808661718eba0161719f995c0b4d",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661148855016114907fe90000",
+        "uri" : "/packages/2c92808661148855016114907fe90000",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928086616e2bee01616e5b3a4a00ac",
+        "uri" : "/packages/2c928086616e2bee01616e5b3a4a00ac",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719bd2570033",
+        "uri" : "/packages/2c92808661718eba0161719bd2570033",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba016171a02ff90ba1",
+        "uri" : "/packages/2c92808661718eba016171a02ff90ba1",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928087601ee14301601f0225070039",
+        "uri" : "/packages/2c928087601ee14301601f0225070039",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928086601f2dd101601f4161c00014",
+        "uri" : "/packages/2c928086601f2dd101601f4161c00014",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928087601e5d6501601ebfe8250027",
+        "uri" : "/packages/2c928087601e5d6501601ebfe8250027",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719de6db0370",
+        "uri" : "/packages/2c92808661718eba0161719de6db0370",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c9280876010175f01601345fe04000e",
+        "uri" : "/packages/2c9280876010175f01601345fe04000e",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928086616b5fa101616b6a23a30000",
+        "uri" : "/packages/2c928086616b5fa101616b6a23a30000",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928086618fc6c701618fcf56b30000",
+        "uri" : "/packages/2c928086618fc6c701618fcf56b30000",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928086616b5fa101616b84ea6f0072",
+        "uri" : "/packages/2c928086616b5fa101616b84ea6f0072",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c9280866169648501616b4667780000",
+        "uri" : "/packages/2c9280866169648501616b4667780000",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba016171a047760baa",
+        "uri" : "/packages/2c92808661718eba016171a047760baa",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719fcb9c0b66",
+        "uri" : "/packages/2c92808661718eba0161719fcb9c0b66",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c9280866194e6f901619a2ec69b0000",
+        "uri" : "/packages/2c9280866194e6f901619a2ec69b0000",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c9280865f824b29015f82cf24c71e7a",
+        "uri" : "/packages/2c9280865f824b29015f82cf24c71e7a",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719fdea60b6d",
+        "uri" : "/packages/2c92808661718eba0161719fdea60b6d",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba016171a012230b8a",
+        "uri" : "/packages/2c92808661718eba016171a012230b8a",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928087601ee14301601efa1adf0026",
+        "uri" : "/packages/2c928087601ee14301601efa1adf0026",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719e15280382",
+        "uri" : "/packages/2c92808661718eba0161719e15280382",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719f812d0b44",
+        "uri" : "/packages/2c92808661718eba0161719f812d0b44",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719bb1ec001f",
+        "uri" : "/packages/2c92808661718eba0161719bb1ec001f",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719b7d43000d",
+        "uri" : "/packages/2c92808661718eba0161719b7d43000d",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719db14e035e",
+        "uri" : "/packages/2c92808661718eba0161719db14e035e",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba016171a1d01e11f2",
+        "uri" : "/packages/2c92808661718eba016171a1d01e11f2",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719b976d0016",
+        "uri" : "/packages/2c92808661718eba0161719b976d0016",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719be645003a",
+        "uri" : "/packages/2c92808661718eba0161719be645003a",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928086616bd34601616c2a010a5b1c",
+        "uri" : "/packages/2c928086616bd34601616c2a010a5b1c",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719c1a2b00ef",
+        "uri" : "/packages/2c92808661718eba0161719c1a2b00ef",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c9280865f82d54c015f8313166a1e7a",
+        "uri" : "/packages/2c9280865f82d54c015f8313166a1e7a",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928087601e5d6501601eb33ace0014",
+        "uri" : "/packages/2c928087601e5d6501601eb33ace0014",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719dca7e0367",
+        "uri" : "/packages/2c92808661718eba0161719dca7e0367",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719ef88307e4",
+        "uri" : "/packages/2c92808661718eba0161719ef88307e4",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719d8df90349",
+        "uri" : "/packages/2c92808661718eba0161719d8df90349",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928086601f2dd101601f33b9df0001",
+        "uri" : "/packages/2c928086601f2dd101601f33b9df0001",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719e83350509",
+        "uri" : "/packages/2c92808661718eba0161719e83350509",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c928087601ee14301601ef1d0980013",
+        "uri" : "/packages/2c928087601ee14301601ef1d0980013",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba016171a282dc122a",
+        "uri" : "/packages/2c92808661718eba016171a282dc122a",
+        "type" : "urn:content-service:resources:content_package",
+        "scopes" : [ {
+          "name" : "urn:content-service:scopes:view_material"
+        }, {
+          "name" : "urn:content-service:scopes:edit_material"
+        } ],
+        "typedScopes" : [ ]
+      }, {
+        "name" : "2c92808661718eba0161719dfddb0379",
+        "uri" : "/packages/2c92808661718eba0161719dfddb0379",
         "type" : "urn:content-service:resources:content_package",
         "scopes" : [ {
           "name" : "urn:content-service:scopes:view_material"
@@ -1392,7 +1942,15 @@
     "xXSSProtection" : "1; mode=block",
     "contentSecurityPolicy" : "frame-src 'self'"
   },
-  "smtpServer" : { },
+  "smtpServer" : {
+    "password" : "Raushman!2",
+    "starttls" : "true",
+    "auth" : "true",
+    "host" : "smtp.andrew.cmu.edu",
+    "from" : "rgachuhi@cmu.edu",
+    "ssl" : "true",
+    "user" : "rgachuhi"
+  },
   "loginTheme" : "oli_theme",
   "accountTheme" : "keycloak",
   "eventsEnabled" : false,
@@ -1614,6 +2172,20 @@
       "authenticator" : "direct-grant-validate-otp",
       "requirement" : "OPTIONAL",
       "priority" : 30,
+      "userSetupAllowed" : false,
+      "autheticatorFlow" : false
+    } ]
+  }, {
+    "id" : "da8baaee-1ad8-43fe-9a90-748881ef6830",
+    "alias" : "docker auth",
+    "description" : "Used by Docker clients to authenticate against the IDP",
+    "providerId" : "basic-flow",
+    "topLevel" : true,
+    "builtIn" : true,
+    "authenticationExecutions" : [ {
+      "authenticator" : "docker-http-basic-authenticator",
+      "requirement" : "REQUIRED",
+      "priority" : 10,
       "userSetupAllowed" : false,
       "autheticatorFlow" : false
     } ]

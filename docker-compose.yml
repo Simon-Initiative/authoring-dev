@@ -2,18 +2,17 @@ version: '3.1'
 services:
   mysql-keycloak:
     build: ./mysql
-    image: oli/mysql
     container_name: oli-mysql-keycloak
     env_file:
       - ./keycloak-mysql/keycloak.envs
     volumes:
-      - /oli/databases/keycloak:/var/lib/mysql
-      - /oli/databases/keycloak_conf:/etc/mysql/conf.d
+#      - /oli/databases/keycloak:/var/lib/mysql
+      - keycloak-db:/var/lib/mysql
     networks:
       - service-tier
   keycloak-sso:
     build: ./keycloak-mysql
-    image: oli/keycloak-mysql
+    image: oli/keycloak-mgysql
     container_name: oli-keycloak
     env_file:
       - ./keycloak-mysql/keycloak.envs
@@ -29,9 +28,11 @@ services:
     container_name: oli-mysql-content-service
     env_file:
       - ../content-service/service.envs
+    ports:
+      - "3377:3307"
     volumes:
-      - /oli/databases/content:/var/lib/mysql
-      - /oli/databases/content_conf:/etc/mysql/conf.d
+#      - /oli/databases/content:/var/lib/mysql
+      - content-db:/var/lib/mysql
     networks:
       - service-tier
   content:
@@ -52,12 +53,11 @@ services:
     networks:
       - service-tier
     depends_on:
-      - keycloak-sso
       - mysql-content
   editor:
-    container_name: oli-editor
     build: ../course-editor
     image: oli/editor
+    container_name: oli-editor
     ports:
       - "9000:9000"
     networks:
@@ -67,6 +67,14 @@ services:
       - ../course-editor/dist:/app/dist
       - /app/node_modules
     command: npm run dev
+  editor-dist:
+    build:
+      context: ../course-editor
+      dockerfile: Dockerfile-prod
+    image: oli/editor-dist
+    container_name: oli-editor-dist
+    networks:
+      - service-tier
   nginx:
     build: ./nginx
     image: oli/nginx
@@ -86,6 +94,12 @@ services:
       - ./ssh-server/ssh.envs
     networks:
       - service-tier
+#  gateway:
+#    build: ../gateway
+#    image: oli/gateway
+#    container_name: oli-gateway
+#    networks:
+#      - service-tier
   dev.local:
     build: ./ha-proxy
     image: oli/haproxy
@@ -97,9 +111,14 @@ services:
     networks:
       - service-tier
     depends_on:
+      - nginx
+#      - gateway
       - content
       - editor
       - ssh-server
+volumes:
+  keycloak-db:
+  content-db:
 networks:
   service-tier:
     driver: bridge
