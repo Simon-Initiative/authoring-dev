@@ -6,8 +6,8 @@ services:
     env_file:
       - ./keycloak-mysql/keycloak.envs
     volumes:
-#      - /oli/databases/keycloak:/var/lib/mysql
-      - keycloak-db:/var/lib/mysql
+      - /oli/databases/keycloak:/var/lib/mysql
+#      - keycloak-db:/var/lib/mysql
     networks:
       - service-tier
   keycloak-sso:
@@ -31,8 +31,8 @@ services:
     ports:
       - "3377:3307"
     volumes:
-#      - /oli/databases/content:/var/lib/mysql
-      - content-db:/var/lib/mysql
+      - /oli/databases/content:/var/lib/mysql
+#      - content-db:/var/lib/mysql
     networks:
       - service-tier
   content:
