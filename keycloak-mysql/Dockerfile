@@ -28,7 +28,7 @@ USER jboss
 
 # -Dkeycloak.migration.strategy=IGNORE_EXISTING
 CMD ["-b", "0.0.0.0"]
-# ,"-Dkeycloak.migration.action=export", \
+#, "-Dkeycloak.migration.action=import", \
 #    "-Dkeycloak.migration.realmName=oli_security", \
 #    "-Dkeycloak.migration.provider=dir", \
 #    "-Dkeycloak.migration.dir=/export", \
