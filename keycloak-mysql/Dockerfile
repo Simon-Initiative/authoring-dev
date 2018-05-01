@@ -1,7 +1,3 @@
-#FROM olisimon/keycloak-mysql
-#FROM dalaran.oli.cmu.edu:9993/nexus/repository/docker/oli/keycloak-mysql
-#FROM jboss/keycloak-mysql:3.2.0.Final
-## Version below is currently in effect
 FROM jboss/keycloak-mysql:3.1.0.Final
 
 ENV KEYCLOAK_LOGLEVEL DEBUG
@@ -26,7 +22,6 @@ USER root
 RUN mkdir /export && chown -R jboss:0 /export
 USER jboss
 
-# -Dkeycloak.migration.strategy=IGNORE_EXISTING
 CMD ["-b", "0.0.0.0"]
 #, "-Dkeycloak.migration.action=import", \
 #    "-Dkeycloak.migration.realmName=oli_security", \

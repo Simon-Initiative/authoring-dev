@@ -76,10 +76,16 @@ services:
       - ../course-editor/dist:/oli/course-editor/dist
     networks:
       - service-tier
+#  web-assets:
+#    build: ./web-assets-nginx
+#    image: oli/web-assets-nginx
+#    container_name: oli-web-assets-nginx
+#    volumes:
+#      - /oli/content/webcontent:/oli/webcontent/webcontents
+#    networks:
+#      - service-tier
   ssh-server:
-    build:
-      context: ./ssh-server
-      dockerfile: Dockerfile-dev
+    build: ./ssh-server
     image: oli/ssh-server
     container_name: oli-ssh-server
     env_file:
