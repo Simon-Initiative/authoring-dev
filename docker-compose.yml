@@ -29,8 +29,8 @@ services:
     container_name: oli-keycloak
     env_file:
       - ./keycloak-mysql/keycloak.envs
-    volumes:
-      - /oli/databases/keycloak_dump:/export
+#    volumes:
+#      - /oli/databases/keycloak_dump:/export
     networks:
       - service-tier
     depends_on:
@@ -68,22 +68,22 @@ services:
       - /app/node_modules
     command: npm run dev
   nginx:
-    build: ./nginx
+    build: frontend-nginx
     image: oli/nginx
     container_name: oli-nginx
     volumes:
-      - /oli/content/webcontent:/oli/webcontent/webcontents
       - ../course-editor/dist:/oli/course-editor/dist
     networks:
       - service-tier
-#  web-assets:
-#    build: ./web-assets-nginx
-#    image: oli/web-assets-nginx
-#    container_name: oli-web-assets-nginx
-#    volumes:
-#      - /oli/content/webcontent:/oli/webcontent/webcontents
-#    networks:
-#      - service-tier
+  web-assets:
+    build: ./web-assets-nginx
+    image: oli/web-assets-nginx
+    container_name: oli-web-assets-nginx
+    volumes:
+      - /oli/content/webcontent:/oli/webcontent/webcontents
+      - /oli/repository:/oli/repository
+    networks:
+      - service-tier
   ssh-server:
     build: ./ssh-server
     image: oli/ssh-server
@@ -110,6 +110,7 @@ services:
       - service-tier
     depends_on:
       - nginx
+      - web-assets
 #      - gateway
       - content
       - editor
