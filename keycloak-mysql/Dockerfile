@@ -16,10 +16,9 @@ RUN java -jar /usr/share/java/saxon.jar \
 
 RUN rm /opt/jboss/keycloak/enableProxy.xsl
 
-COPY themes/ /opt/jboss/keycloak/themes/
-
 USER root
-RUN mkdir /export && chown -R jboss:0 /export
+COPY themes/ /opt/jboss/keycloak/themes/
+RUN chown -R jboss:jboss /opt/jboss/keycloak/themes/ && mkdir /export && chown -R jboss:0 /export
 USER jboss
 
 ADD oli_security-realm.json /export/

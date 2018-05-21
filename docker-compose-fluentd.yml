@@ -10,6 +10,13 @@ services:
 #      - keycloak-db:/var/lib/mysql
     networks:
       - service-tier
+    depends_on:
+      - fluentd
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-mysql-keycloak"
   mysql-content:
     build: ./mysql
     image: oli/mysql
@@ -23,6 +30,13 @@ services:
 #      - content-db:/var/lib/mysql
     networks:
       - service-tier
+    depends_on:
+      - fluentd
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-mysql-content"
   keycloak-sso:
     build: ./keycloak-mysql
     image: oli/keycloak-mgysql
@@ -35,6 +49,12 @@ services:
       - service-tier
     depends_on:
       - mysql-keycloak
+      - fluentd
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-keycloak"
   content:
     build: ../content-service
     image: oli/content-service
@@ -55,6 +75,12 @@ services:
       - service-tier
     depends_on:
       - mysql-content
+      - fluentd
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-content-service"
   editor:
     build: ../course-editor
     image: oli/editor
@@ -68,6 +94,11 @@ services:
       - ../course-editor/dist:/app/dist
       - /app/node_modules
     command: npm run dev
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-editor"
   nginx:
     build: frontend-nginx
     image: oli/nginx
@@ -76,6 +107,13 @@ services:
       - ../course-editor/dist:/oli/course-editor/dist
     networks:
       - service-tier
+    depends_on:
+      - fluentd
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-nginx"
   web-assets:
     build: ./web-assets-nginx
     image: oli/web-assets-nginx
@@ -87,6 +125,13 @@ services:
       - /oli/branding:/oli/branding
     networks:
       - service-tier
+    depends_on:
+      - fluentd
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-web-assets"
   ssh-server:
     build: ./ssh-server
     image: oli/ssh-server
@@ -95,12 +140,26 @@ services:
       - ./ssh-server/ssh.envs
     networks:
       - service-tier
+    depends_on:
+      - fluentd
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-ssh-server"
 #  gateway:
 #    build: ../gateway
 #    image: oli/gateway
 #    container_name: oli-gateway
 #    networks:
 #      - service-tier
+#    depends_on:
+#      - fluentd
+#    logging:
+#      driver: fluentd
+#      options:
+#        fluentd-address: localhost:24224
+#        tag: "oli.oli-gateway"
   dev.local:
     build: ./ha-proxy
     image: oli/haproxy
@@ -118,6 +177,30 @@ services:
       - content
       - editor
       - ssh-server
+      - fluentd
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: "oli.oli-haproxy"
+  fluentd:
+    build: ./fluentd
+    image: oli/fluentd
+    container_name: oli-fluentd
+    networks:
+      - service-tier
+  elasticsearch:
+    image: elasticsearch
+    container_name: oli-elasticsearch
+    expose:
+      - 9200
+    networks:
+      - service-tier
+  kibana:
+    image: kibana
+    container_name: oli-kibana
+    networks:
+      - service-tier
 #volumes:
 #  keycloak-db:
 #  content-db:
