@@ -1,5 +1,11 @@
 version: '3.1'
 services:
+  expression-eval:
+    build: ../expression-eval
+    image: oli/expression-eval
+    container_name: expression-eval
+    networks:
+      - service-tier
   mysql-keycloak:
     build: ./mysql
     container_name: oli-mysql-keycloak
