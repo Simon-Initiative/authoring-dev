@@ -4,6 +4,8 @@ services:
     build: ../expression-eval
     image: oli/expression-eval
     container_name: expression-eval
+    ports:
+      - "8000:8000"
     networks:
       - service-tier
   mysql-keycloak:
