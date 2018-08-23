@@ -33,7 +33,7 @@ services:
       - service-tier
   keycloak-sso:
     build: ./keycloak-mysql
-    image: oli/keycloak-mgysql
+    image: oli/keycloak-mysql
     container_name: oli-keycloak
     env_file:
       - ./keycloak-mysql/keycloak.envs
