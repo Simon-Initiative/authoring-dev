@@ -1,4 +1,4 @@
-FROM jboss/keycloak-mysql:3.1.0.Final
+FROM dalaran.oli.cmu.edu:9993/nexus/repository/docker/jboss/keycloak-mysql:3.1.0.Final
 
 ENV KEYCLOAK_LOGLEVEL DEBUG
 
