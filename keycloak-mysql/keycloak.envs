@@ -1,9 +1,15 @@
 # MySQL configuration
-MYSQL_ROOT_PASSWORD=password
-MYSQL_USER=keycloak
-MYSQL_PASSWORD=password
-MYSQL_DATABASE=keycloak
-MYSQL_PORT_3306_TCP_ADDR=mysql-keycloak
-MYSQL_PORT_3306_TCP_PORT=3306
+# MYSQL_ROOT_PASSWORD=password
+# MYSQL_USER=keycloak
+# MYSQL_PASSWORD=password
+# MYSQL_DATABASE=keycloak
+# MYSQL_PORT_3306_TCP_ADDR=mysql-keycloak
+# MYSQL_PORT_3306_TCP_PORT=3306
 KEYCLOAK_USER=admin
 KEYCLOAK_PASSWORD=admin
+
+DB_VENDOR=MYSQL
+DB_ADDR=mysql-keycloak
+DB_DATABASE=keycloak
+DB_USER=keycloak
+DB_PASSWORD=password
