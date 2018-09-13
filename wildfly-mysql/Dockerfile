@@ -4,9 +4,9 @@ MAINTAINER Raphael Gachuhi, oli.cmu.edu
 ENV DEPLOYMENT_DIR ${JBOSS_HOME}/standalone/deployments/
 
 RUN cd $JBOSS_HOME \
-    && curl -O https://downloads.jboss.org/keycloak/3.1.0.Final/adapters/keycloak-oidc/keycloak-wildfly-adapter-dist-3.1.0.Final.tar.gz \
-    && tar xf keycloak-wildfly-adapter-dist-3.1.0.Final.tar.gz \
-    && rm keycloak-wildfly-adapter-dist-3.1.0.Final.tar.gz \
+    && curl -O https://downloads.jboss.org/keycloak/4.3.0.Final/adapters/keycloak-oidc/keycloak-wildfly-adapter-dist-4.3.0.Final.tar.gz \
+    && tar xf keycloak-wildfly-adapter-dist-4.3.0.Final.tar.gz \
+    && rm keycloak-wildfly-adapter-dist-4.3.0.Final.tar.gz \
     && ${JBOSS_HOME}/bin/jboss-cli.sh --file=${JBOSS_HOME}/bin/adapter-install-offline.cli \
     && cd $HOME
 
