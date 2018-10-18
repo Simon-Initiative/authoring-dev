@@ -1,6 +1,7 @@
-FROM dalaran.oli.cmu.edu:9993/nexus/repository/docker/jboss/keycloak-mysql:3.1.0.Final
+#FROM dalaran.oli.cmu.edu:9993/nexus/repository/docker/jboss/keycloak-mysql:3.1.0.Final
+FROM jboss/keycloak
 
-ENV KEYCLOAK_LOGLEVEL DEBUG
+#ENV KEYCLOAK_LOGLEVEL DEBUG
 
 ADD enableProxy.xsl /opt/jboss/keycloak/
 
@@ -24,10 +25,11 @@ USER jboss
 ADD oli_security-realm.json /export/
 ADD oli_security-users-0.json /export/
 
-CMD ["-b", "0.0.0.0", "-Dkeycloak.migration.action=import", \
-    "-Dkeycloak.migration.realmName=oli_security", \
-    "-Dkeycloak.migration.provider=dir", \
-    "-Dkeycloak.migration.dir=/export", \
-    "-Dkeycloak.migration.usersExportStrategy=DIFFERENT_FILES", \
-    "-Dkeycloak.migration.usersPerFile=1", \
-    "-Dkeycloak.migration.strategy=IGNORE_EXISTING"]
+CMD ["-b", "0.0.0.0"]
+#, "-Dkeycloak.migration.action=import", \
+#    "-Dkeycloak.migration.realmName=oli_security", \
+#    "-Dkeycloak.migration.provider=dir", \
+#    "-Dkeycloak.migration.dir=/export", \
+#    "-Dkeycloak.migration.usersExportStrategy=DIFFERENT_FILES", \
+#    "-Dkeycloak.migration.usersPerFile=1", \
+#    "-Dkeycloak.migration.strategy=IGNORE_EXISTING"]

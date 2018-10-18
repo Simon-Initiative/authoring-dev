@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx
 RUN mkdir -p /oli/webcontent/webcontents
 RUN mkdir -p /oli/repository
 RUN mkdir -p /oli/superactivity
