@@ -1,0 +1,33 @@
+{
+  "realm" : "oli_security",
+  "users" : [ {
+    "id" : "daad1370-f532-468a-b691-31961eecfc57",
+    "createdTimestamp" : 1527866051906,
+    "username" : "manager",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "attributes" : { },
+    "credentials" : [ {
+      "type" : "password",
+      "hashedSaltedValue" : "GbO8FABM928rLhIbxTZ2aBr7vDNEbQBzfxOypmYubsaZB8TF1+5m5kYXTIcKpg6Id8Hd1Y/5VvlpHigV5uKdHg==",
+      "salt" : "XEspEHy5uXTLGmqi4BK1vw==",
+      "hashIterations" : 27500,
+      "counter" : 0,
+      "algorithm" : "pbkdf2-sha256",
+      "digits" : 0,
+      "period" : 0,
+      "createdDate" : 1527866063632,
+      "config" : { }
+    } ],
+    "disableableCredentialTypes" : [ "password" ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "admin", "user", "offline_access", "uma_authorization" ],
+    "clientRoles" : {
+      "realm-management" : [ "manage-identity-providers", "manage-realm", "manage-events", "manage-clients", "create-client", "manage-authorization", "realm-admin", "query-clients", "query-groups", "manage-users", "query-users", "impersonation" ],
+      "account" : [ "view-profile", "manage-account" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}

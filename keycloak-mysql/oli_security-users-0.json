@@ -17,6 +17,7 @@
       "content_service" : [ "uma_protection" ],
       "account" : [ "view-profile", "manage-account" ]
     },
+    "notBefore" : 0,
     "groups" : [ ]
   } ]
 }

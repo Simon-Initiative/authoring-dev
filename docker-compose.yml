@@ -56,7 +56,7 @@ services:
       - "8787:8787"  # for remote debugging
     volumes:
       - /oli/content/course_content_xml:/oli/course_content_xml
-      - /oli/content/course_content_volume:/oli/course_content_volume
+#      - /oli/content/course_content_volume:/oli/course_content_volume
       - /oli/content/webcontent:/oli/webcontent
       - /oli/repository:/oli/repository
     networks:
@@ -126,9 +126,6 @@ services:
       - content
       - editor
       - ssh-server
-#volumes:
-#  keycloak-db:
-#  content-db:
 networks:
   service-tier:
     driver: bridge
