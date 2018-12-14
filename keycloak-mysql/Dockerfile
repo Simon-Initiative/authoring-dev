@@ -24,7 +24,6 @@ USER jboss
 
 ADD oli_security-realm.json /export/
 ADD oli_security-users-0.json /export/
-ADD oli_security-users-1.json /export/
 
 CMD ["-b", "0.0.0.0", "-Dkeycloak.migration.action=import", \
     "-Dkeycloak.migration.realmName=oli_security", \
