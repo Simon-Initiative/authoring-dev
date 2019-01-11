@@ -54,11 +54,13 @@ services:
     ports:
       - "9110:9990"  # for remote deployment
       - "8787:8787"  # for remote debugging
+      - "9990:9990"  # for remote debugging
     volumes:
       - /oli/content/course_content_xml:/oli/course_content_xml
 #      - /oli/content/course_content_volume:/oli/course_content_volume
       - /oli/content/webcontent:/oli/webcontent
       - /oli/repository:/oli/repository
+      - /oli/dtd:/oli/dtd
     networks:
       - service-tier
     depends_on:
