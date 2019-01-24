@@ -1,3 +1,13 @@
 [mysqld]
 transaction_isolation=READ-COMMITTED
 max_allowed_packet=128M
+[client]
+default-character-set = utf8mb4
+
+[mysql]
+default-character-set = utf8mb4
+
+[mysqld]
+character-set-client-handshake = FALSE
+character-set-server = utf8mb4
+collation_server=utf8mb4_unicode_520_ci
