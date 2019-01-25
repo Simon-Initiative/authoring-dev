@@ -9,7 +9,7 @@ services:
     networks:
       - service-tier
   mysql-keycloak:
-    build: ./mysql
+    build: ./mysql-keycloak
     container_name: oli-mysql-keycloak
     env_file:
       - ./keycloak-mysql/keycloak.envs
@@ -57,7 +57,6 @@ services:
       - "9990:9990"  # for remote debugging
     volumes:
       - /oli/content/course_content_xml:/oli/course_content_xml
-#      - /oli/content/course_content_volume:/oli/course_content_volume
       - /oli/content/webcontent:/oli/webcontent
       - /oli/repository:/oli/repository
       - /oli/dtd:/oli/dtd
@@ -105,12 +104,6 @@ services:
       - ./ssh-server/ssh.envs
     networks:
       - service-tier
-#  gateway:
-#    build: ../gateway
-#    image: oli/gateway
-#    container_name: oli-gateway
-#    networks:
-#      - service-tier
   dev.local:
     build: ./ha-proxy
     image: oli/haproxy
@@ -124,10 +117,12 @@ services:
     depends_on:
       - nginx
       - web-assets
-#      - gateway
       - content
       - editor
       - ssh-server
 networks:
   service-tier:
     driver: bridge
+#volumes:
+#  content-db:
+#  keycloak-db:
