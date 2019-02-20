@@ -64,19 +64,6 @@ services:
       - service-tier
     depends_on:
       - mysql-content
-  editor:
-    build: ../course-editor
-    image: oli/editor
-    container_name: oli-editor
-    ports:
-      - "9000:9000"
-    networks:
-      - service-tier
-    volumes:
-      - ../course-editor:/app
-      - ../course-editor/dist:/app/dist
-      - /app/node_modules
-    command: npm run dev
   nginx:
     build: frontend-nginx
     image: oli/nginx
@@ -118,7 +105,6 @@ services:
       - nginx
       - web-assets
       - content
-      - editor
       - ssh-server
 networks:
   service-tier:
