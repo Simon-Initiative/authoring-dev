@@ -10,6 +10,7 @@ services:
       - service-tier
   mysql-keycloak:
     build: ./mysql-keycloak
+    image: oli/mysql-keycloak
     container_name: oli-mysql-keycloak
     env_file:
       - ./keycloak-mysql/keycloak.envs
