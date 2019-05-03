@@ -1,4 +1,4 @@
-# editor-base
+# authoring-dev
 The base repository for running the OLI authoring platform in a
 development environment. 
 
@@ -48,47 +48,47 @@ of directories shared in Docker.
         * /oli/repository/presentation/chaperone-1.0
 
  1. `cd` into /oli, create a new `sources` folder and git clone the following four repositories into it:
-    * [course-editor](https://github.com/Simon-Initiative/course-editor)
-    * [content-service](https://github.com/Simon-Initiative/content-service)
-    * [editor-base](https://github.com/Simon-Initiative/editor-base)
-    * [expression-eval](https://github.com/Simon-Initiative/expression-eval)
-    * [achilles](https://github.com/Simon-Initiative/achilles)
+    * [authoring-client](https://github.com/Simon-Initiative/authoring-client)
+    * [authoring-server](https://github.com/Simon-Initiative/authoring-server)
+    * [authoring-dev](https://github.com/Simon-Initiative/authoring-dev)
+    * [authoring-eval](https://github.com/Simon-Initiative/authoring-eval)
+    * [authoring-admin](https://github.com/Simon-Initiative/authoring-admin)
 
- 1. Install node_modules in course-editor
+ 1. Install node_modules in authoring-client
     * Visual Studio Code and Typescript require that node module dependencies be installed locally for intellisense to work. Run the following commands to install node_modules:
 
      ```
     $ brew install yarn
-    $ cd course-editor
+    $ cd authoring-client
     $ yarn
     ```
 
- 1. From the `editor-base` directory, issue the following command:
+ 1. From the `authoring-dev` directory, issue the following command:
 
      ```
     $ docker-compose up
     ```
 
      The above step will download all necesary docker image files and stand up the containers as
-    specified in the `docker-compose.yml` file found in the `editor-base` repository.
+    specified in the `docker-compose.yml` file found in the `authoring-dev` repository.
 
        * This step may fail to authenticate with the ssh docker container if you have never logged in before. If experiencing `Service 'ssh-server' failed to build`...`no basic auth credentials`, get login info for the ssh server and on your machine run `docker login [ssh server url]` to store the credentials
 
  1. Once the previous step has reached a steady state (look for "oli-editor| Compiled successfully"
-message), issue the following command from the `content-service` directory:
+message), issue the following command from the `authoring-server` directory:
 
      ```
     $ mvn clean install
     ```
 
-     The above command builds a clean version of the Java-based `content-service` and deploys it
+     The above command builds a clean version of the Java-based `authoring-server` and deploys it
     into the running JBoss application server container. If during development one makes
-    code changes to the `content-service`, this step can be repeated to redeploy the
-    latest `content-service`.
+    code changes to the `authoring-server`, this step can be repeated to redeploy the
+    latest `authoring-server`.
 
- 1. Go to <http://dev.local/auth/> and go to "Administration Console." From there, get credentials and login.
+ 1. Go to <http://dev.local:9000/auth/> and go to "Administration Console." From there, get credentials and login.
     * Navigate to "Users" and then go to "Add User." From there, create an account and tick "Email Verified" to be off. 
     * After adding the user, click on the ID of the newly created account. Navigate to "Role Mappings" and then add all the available roles. 
 
- 1. Open Chrome web-browser to <http://dev.local> and log in wiht credentials created previously.
+ 1. Open Chrome web-browser to <http://dev.local:9000> and log in wiht credentials created previously.
     * Note that in order to create courses you will need to get a course template from svn, and users created will need to be given permission to create courses in keycloak
