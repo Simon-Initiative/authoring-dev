@@ -18,3 +18,6 @@ Register for an account to create and author course packages at [echo.oli.cmu.ed
 Look [here](docs/setup.md) for complete instructions on how to stand up the authoring
 platform in a local development environment.
 
+
+## License
+This software is licensed under the [MIT License](./blob/master/LICENSE) © 2019 Carnegie Mellon University
