@@ -1,5 +1,7 @@
 # OLI Course Authoring Platform
 
+[![Open Learning Initiative](https://oli.cmu.edu/wp-content/uploads/2018/10/oli-logo-78px-high-1.svg)](http://oli.cmu.edu/)
+
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/Simon-Initiative/course-editor/blob/master/LICENSE)
 
 Web-based course authoring for Open Learning Initiative course packages. 
