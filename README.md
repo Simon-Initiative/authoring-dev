@@ -20,4 +20,4 @@ platform in a local development environment.
 
 
 ## License
-This software is licensed under the [MIT License](./blob/master/LICENSE) © 2019 Carnegie Mellon University
+This software is licensed under the [MIT License](./LICENSE) © 2019 Carnegie Mellon University
