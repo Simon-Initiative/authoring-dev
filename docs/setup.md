@@ -126,7 +126,7 @@ of directories shared in Docker.
     * Navigate to Credentials and set a password for the new admin user, tick "Temporary" to be **off**
     * Then, using the left sidebar, navigate to "Clients" and click on the "content_client" Client ID. Set the following fields:
       | Field | Value |
-      |----|-----|
+      | ---- | ----- |
       | Root URL | `http://dev.local:9000` |
       | Valid Redirect URIs | `*` |
       | Web Origins  | `*` |
