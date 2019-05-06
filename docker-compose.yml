@@ -112,5 +112,5 @@ networks:
     driver: bridge
 
 volumes:
- content-db:
- keycloak-db:
+  content-db:
+  keycloak-db:
