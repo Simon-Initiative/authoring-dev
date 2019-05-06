@@ -1,9 +1,9 @@
 version: '3.1'
 services:
-  expression-eval:
+  authoring-eval:
     build: ../authoring-eval
-    image: oli/expression-eval
-    container_name: expression-eval
+    image: oli/authoring-eval
+    container_name: authoring-eval
     ports:
       - "8000:8000"
     networks:
@@ -20,8 +20,8 @@ services:
       - service-tier
   mysql-content:
     build: ./mysql
-    image: oli/mysql
-    container_name: oli-mysql-content-service
+    image: oli/mysql-content
+    container_name: oli-mysql-content
     env_file:
       - ../authoring-server/service.envs
     ports:
@@ -36,17 +36,17 @@ services:
     container_name: oli-keycloak
     env_file:
       - ./keycloak-mysql/keycloak.envs
-# # uncomment for keycloak configuration exporting
+#    # uncomment for keycloak configuration exporting
 #    volumes:
 #      - /oli/databases/keycloak_dump:/export
     networks:
       - service-tier
     depends_on:
       - mysql-keycloak
-  content:
+  authoring-server:
     build: ../authoring-server
-    image: oli/content
-    container_name: content
+    image: oli/authoring-server
+    container_name: authoring-server
     env_file:
       - ../authoring-server/service.envs
     environment:
@@ -105,7 +105,7 @@ services:
     depends_on:
       - nginx
       - web-assets
-      - content
+      - authoring-server
       - ssh-server
 networks:
   service-tier:
