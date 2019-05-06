@@ -110,7 +110,6 @@ services:
 networks:
   service-tier:
     driver: bridge
-
 volumes:
  content-db:
  keycloak-db:
