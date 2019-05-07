@@ -35,12 +35,16 @@ of directories shared in Docker.
     2. Next 
         * ```wget https://s3.amazonaws.com/oli-cdn/quick_preview_support.tgz```
         * ```tar -xvzf quick_preview_support.tgz```
+    3. Download dtd
+        * ```wget https://s3.amazonaws.com/oli-cdn/oli-dtd.tgz```
+        * ```tar -xvzf oli-dtd.tgz```
     3. Then, create a folder /oli/repository/presentation:
         1. ```mkdir -p repository/presentation```
     4. Here is the set of new folders you will end up having under /oli
         * /oli/branding
         * /oli/repository/presentation
         * /oli/superactivity
+        * /oli/dtd
     5. Within /oli/repository/presentation, issue the following commands:
         * ``` cd /oli/repository/presentation```
         * ```wget https://s3.amazonaws.com/oli-cdn/themes.tgz```
