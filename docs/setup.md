@@ -114,7 +114,7 @@ of directories shared in Docker.
 
       ```sh
       brew install yarn      # or using npm: npm install -g yarn
-      cd cd /oli/sources/authoring-client
+      cd /oli/sources/authoring-client
       yarn
       ```
 
