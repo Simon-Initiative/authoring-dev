@@ -98,13 +98,14 @@ of directories shared in Docker.
     * Create a build of authoring-server used for the initial run
 
       ```sh
-      cd authoring-server
+      cd /oli/sources/authoring-server
       mvn clean package
       ```
 
     * From the `authoring-dev` directory, build docker images
 
       ```sh
+      cd /oli/sources/authoring-dev
       docker-compose build
       ```
 
@@ -113,7 +114,7 @@ of directories shared in Docker.
 
       ```sh
       brew install yarn      # or using npm: npm install -g yarn
-      cd authoring-client
+      cd cd /oli/sources/authoring-client
       yarn
       ```
 
@@ -126,6 +127,7 @@ of directories shared in Docker.
 1. From the `authoring-dev` directory, issue the following command:
 
     ```sh
+    cd /oli/sources/authoring-dev
     docker-compose up
     ```
 
@@ -135,6 +137,7 @@ of directories shared in Docker.
 1. Once the previous step has reached a steady state (look for `authoring-server | Started X of Y services (Z services are lazy, passive or on-demand)` message), issue the following command from the `authoring-server` directory:
 
     ```sh
+    cd /oli/sources/authoring-server
     mvn clean install
     ```
 
