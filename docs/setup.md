@@ -33,7 +33,7 @@ of directories shared in Docker.
         * ```wget https://s3.amazonaws.com/oli-cdn/branding.tgz```
         * ```tar -xvzf branding.tgz```
     2. Next 
-        * ```https://s3.amazonaws.com/oli-cdn/quick_preview_support.tgz```
+        * ```wget https://s3.amazonaws.com/oli-cdn/quick_preview_support.tgz```
         * ```tar -xvzf quick_preview_support.tgz```
     3. Then, create a folder /oli/repository/presentation:
         1. ```mkdir -p repository/presentation```
