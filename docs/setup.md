@@ -40,9 +40,9 @@ of directories shared in Docker.
         * /oli/branding
         * /oli/repository/presentation
         * /oli/superactivity
-    5. Within /oli/repository/presentation you will checkout themes from svn:
-        * ```svn co https://svn.oli.cmu.edu/svn/themes/azool/branches/whirlwind-v_1_4-stable/theme whirlwind-1.4```
-        * ```svn co https://svn.oli.cmu.edu/svn/themes/azool/branches/chaperone-v_1_0/theme chaperone-1.0```
+    5. Within /oli/repository/presentation you will:
+        * ```wget https://s3.amazonaws.com/oli-cdn/themes.tgz```
+        * ``` tar -xvzf themes.tgz```
     6. You will end up with
         * /oli/repository/presentation/whirlwind-1.4
         * /oli/repository/presentation/chaperone-1.0
