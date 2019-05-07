@@ -29,10 +29,9 @@ of directories shared in Docker.
     1. Click the Menubar Docker Icon > Preferences > File Sharing, then add ```/oli``` to list of shared folders
 
 1. You also need some additional files and folders under "/oli"
-    1. You will need to checkout a copy of https://svn.oli.cmu.edu/svn/themes/branding/branches/v_5_24/branding into folder /oli/branding by issuing the following command:
-
-        * ```svn co https://svn.oli.cmu.edu/svn/themes/branding/branches/v_5_24/branding/ branding```
-
+    1. Within /oli issue the following commands:
+        * ```wget https://s3.amazonaws.com/oli-cdn/branding.tgz```
+        * ```tar -xvzf branding.tgz```
     2. Next, take the "superactivity" folder from this tar file [quick_preview_support.tgz](https://s3.amazonaws.com/oli-cdn/quick_preview_support.tgz) and place it into the /oli folder
     3. Then, create a folder /oli/repository/presentation:
         1. ```mkdir -p repository/presentation```
@@ -40,7 +39,7 @@ of directories shared in Docker.
         * /oli/branding
         * /oli/repository/presentation
         * /oli/superactivity
-    5. Within /oli/repository/presentation you will:
+    5. Within /oli/repository/presentation, issue the following commands:
         * ```wget https://s3.amazonaws.com/oli-cdn/themes.tgz```
         * ``` tar -xvzf themes.tgz```
     6. You will end up with
