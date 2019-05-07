@@ -48,6 +48,14 @@ of directories shared in Docker.
     6. You will end up with
         * /oli/repository/presentation/whirlwind-1.4
         * /oli/repository/presentation/chaperone-1.0
+    7. Create content folder
+       ```sh
+       mkdir -p /oli/content/course_content_xml
+       mkdir -p /oli/content/webcontent
+       cd /oli/content/course_content_xml
+       wget https://s3.amazonaws.com/oli-cdn/template.tgz
+       tar xzfv template.tgz
+      ```
 
 1. `cd` into /oli, create a new `sources` folder and git clone the following four repositories into it:
     * [authoring-client](https://github.com/Simon-Initiative/authoring-client)
@@ -68,21 +76,21 @@ of directories shared in Docker.
     ```
 
 1. Copy configuration files
-    * Copy required configuration files
+    1. Copy and customize required configuration files
 
       ```sh
-      cp -r /oli/sources/authoring-server/conf /oli/service_config
-      ```
-
-    * Customize configuration
-
-      ```sh
+      mkdir /oli/service_config
       cp /oli/sources/authoring-server/conf/content-service-conf.example.json /oli/service_config/content-service-conf.json
-
       # make configuration modifications
       vim /oli/service_config/content-service-conf.json
       ```
-
+    2. Copy and customize authoring-server environmental variable file
+       ```sh
+      cd /oli/sources/authoring-server
+      cp service.example.envs service.envs
+      # make configuration modifications
+      vim service.envs
+      ```
 1. Create docker images
     * Create a build of authoring-server used for the initial run
 
@@ -144,8 +152,4 @@ of directories shared in Docker.
 1. Open Chrome web-browser to <http://dev.local:9000> and log in with admin credentials created previously.
     * Note that in order to create courses you will need to get a course template from svn, and users created will need to be given permission to create courses in keycloak
 
-      ```sh
-      cd /oli/content/course_content_xml
-      wget https://s3.amazonaws.com/oli-cdn/template.tgz
-      tar xzfv template.tgz
-      ```
+      
