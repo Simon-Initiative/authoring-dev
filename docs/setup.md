@@ -81,19 +81,18 @@ of directories shared in Docker.
 
 1. Copy configuration files
     1. Copy and customize required configuration files
-
       ```sh
-      mkdir /oli/service_config
-      cp /oli/sources/authoring-server/conf/content-service-conf.example.json /oli/service_config/content-service-conf.json
-      # make configuration modifications
-      vim /oli/service_config/content-service-conf.json
+       mkdir /oli/service_config
+       cp /oli/sources/authoring-server/conf/content-service-conf.example.json /oli/service_config/content-service-conf.json
+       # make configuration modifications
+       vim /oli/service_config/content-service-conf.json
       ```
     2. Copy and customize authoring-server environmental variable file
        ```sh
-      cd /oli/sources/authoring-server
-      cp service.example.envs service.envs
-      # make configuration modifications
-      vim service.envs
+       cd /oli/sources/authoring-server
+       cp service.example.envs service.envs
+       # make configuration modifications
+       vim service.envs
       ```
 1. Create docker images
     * Create a build of authoring-server used for the initial run
