@@ -42,6 +42,7 @@ of directories shared in Docker.
         * /oli/repository/presentation
         * /oli/superactivity
     5. Within /oli/repository/presentation, issue the following commands:
+        * ``` cd /oli/repository/presentation```
         * ```wget https://s3.amazonaws.com/oli-cdn/themes.tgz```
         * ```tar -xvzf themes.tgz```
     6. You will end up with
