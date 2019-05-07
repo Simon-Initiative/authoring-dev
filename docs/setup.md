@@ -32,7 +32,9 @@ of directories shared in Docker.
     1. Within /oli issue the following commands:
         * ```wget https://s3.amazonaws.com/oli-cdn/branding.tgz```
         * ```tar -xvzf branding.tgz```
-    2. Next, take the "superactivity" folder from this tar file [quick_preview_support.tgz](https://s3.amazonaws.com/oli-cdn/quick_preview_support.tgz) and place it into the /oli folder
+    2. Next 
+        * ```https://s3.amazonaws.com/oli-cdn/quick_preview_support.tgz```
+        * ```tar -xvzf quick_preview_support.tgz```
     3. Then, create a folder /oli/repository/presentation:
         1. ```mkdir -p repository/presentation```
     4. Here is the set of new folders you will end up having under /oli
@@ -41,7 +43,7 @@ of directories shared in Docker.
         * /oli/superactivity
     5. Within /oli/repository/presentation, issue the following commands:
         * ```wget https://s3.amazonaws.com/oli-cdn/themes.tgz```
-        * ``` tar -xvzf themes.tgz```
+        * ```tar -xvzf themes.tgz```
     6. You will end up with
         * /oli/repository/presentation/whirlwind-1.4
         * /oli/repository/presentation/chaperone-1.0
