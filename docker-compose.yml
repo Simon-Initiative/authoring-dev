@@ -25,7 +25,7 @@ services:
     env_file:
       - ../authoring-server/service.envs
     ports:
-      - "3377:3307"
+      - "3377:3306"
     volumes:
      - content-db:/var/lib/mysql
     networks:
