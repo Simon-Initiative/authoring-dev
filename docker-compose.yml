@@ -25,7 +25,7 @@ services:
     env_file:
       - ../authoring-server/service.envs
     ports:
-      - "3377:3307"
+      - "3377:3306"
     volumes:
      - content-db:/var/lib/mysql
     networks:
@@ -84,14 +84,6 @@ services:
       - /oli/branding:/oli/branding
     networks:
       - service-tier
-  ssh-server:
-    build: ./ssh-server
-    image: oli/ssh-server
-    container_name: oli-ssh-server
-    env_file:
-      - ./ssh-server/ssh.envs
-    networks:
-      - service-tier
   dev.local:
     build: ./ha-proxy
     image: oli/haproxy
@@ -99,14 +91,12 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "2222:2222"
     networks:
       - service-tier
     depends_on:
       - nginx
       - web-assets
       - authoring-server
-      - ssh-server
 networks:
   service-tier:
     driver: bridge
