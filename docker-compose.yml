@@ -1,9 +1,9 @@
 version: '3.1'
 services:
-  expression-eval:
-    build: ../expression-eval
-    image: oli/expression-eval
-    container_name: expression-eval
+  authoring-eval:
+    build: ../authoring-eval
+    image: oli/authoring-eval
+    container_name: authoring-eval
     ports:
       - "8000:8000"
     networks:
@@ -20,12 +20,12 @@ services:
       - service-tier
   mysql-content:
     build: ./mysql
-    image: oli/mysql
-    container_name: oli-mysql-content-service
+    image: oli/mysql-content
+    container_name: oli-mysql-content
     env_file:
-      - ../content-service/service.envs
+      - ../authoring-server/service.envs
     ports:
-      - "3377:3307"
+      - "3377:3306"
     volumes:
      - content-db:/var/lib/mysql
     networks:
@@ -36,18 +36,19 @@ services:
     container_name: oli-keycloak
     env_file:
       - ./keycloak-mysql/keycloak.envs
+#    # uncomment for keycloak configuration exporting
 #    volumes:
 #      - /oli/databases/keycloak_dump:/export
     networks:
       - service-tier
     depends_on:
       - mysql-keycloak
-  content:
-    build: ../content-service
-    image: oli/content-service
-    container_name: content-service
+  authoring-server:
+    build: ../authoring-server
+    image: oli/authoring-server
+    container_name: authoring-server
     env_file:
-      - ../content-service/service.envs
+      - ../authoring-server/service.envs
     environment:
       - MYSQL_ADDRESS=mysql-content
     ports:
@@ -69,7 +70,7 @@ services:
     image: oli/nginx
     container_name: oli-nginx
     volumes:
-      - ../course-editor/dist:/oli/course-editor/dist
+      - ../authoring-client/dist:/oli/course-editor/dist
     networks:
       - service-tier
   web-assets:
@@ -83,14 +84,6 @@ services:
       - /oli/branding:/oli/branding
     networks:
       - service-tier
-  ssh-server:
-    build: ./ssh-server
-    image: oli/ssh-server
-    container_name: oli-ssh-server
-    env_file:
-      - ./ssh-server/ssh.envs
-    networks:
-      - service-tier
   dev.local:
     build: ./ha-proxy
     image: oli/haproxy
@@ -98,18 +91,15 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "2222:2222"
     networks:
       - service-tier
     depends_on:
       - nginx
       - web-assets
-      - content
-      - ssh-server
+      - authoring-server
 networks:
   service-tier:
     driver: bridge
-
 volumes:
- content-db:
- keycloak-db:
+  content-db:
+  keycloak-db:
