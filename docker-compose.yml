@@ -82,6 +82,7 @@ services:
       - /oli/repository:/oli/repository
       - /oli/superactivity:/oli/superactivity
       - /oli/branding:/oli/branding
+      - /oli/assets:/oli/assets
     networks:
       - service-tier
   dev.local:
