@@ -84,8 +84,7 @@ of directories shared in Docker.
       ```sh
        mkdir /oli/service_config
        cp /oli/sources/authoring-server/conf/content-service-conf.example.json /oli/service_config/content-service-conf.json
-       # make configuration modifications
-       vim /oli/service_config/content-service-conf.json
+       # make configuration modifications. A complete version of the file is located at https://github.com/Simon-Initiative/dev-docs/blob/master/content-service-conf.json
       ```
     2. Copy and customize authoring-server environmental variable file
        ```sh
