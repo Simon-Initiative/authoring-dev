@@ -1,0 +1,42 @@
+version: '3.1'
+services:
+  # SSH server used to ssh into the stack network for tunneling DB connections
+  ssh-server:
+    build: ./ssh-server
+    container_name: oli-ssh-server
+    env_file:
+      - ./ssh.env
+    networks:
+      - service-tier
+    ports:
+      - "9022:22"
+
+  # Web based code editor for web-based development and configuration changes
+  code-server:
+    build: ./code-server
+    container_name: oli-code-server
+    user: root
+    env_file:
+      - ./code-server.env
+    networks:
+      - service-tier
+    ports:
+      - "9443:8080"
+    volumes:
+      - ../:/home/coder/authoring
+      - user-home:/root
+      - coder-home:/home/coder/
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  service-tier:
+    driver: bridge
+
+networks:
+  service-tier:
+    external:
+      name: authoring-dev_service-tier
+
+volumes:
+  user-home:
+  coder-home:

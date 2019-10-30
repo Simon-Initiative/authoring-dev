@@ -24,3 +24,7 @@ nb-configuration.xml
 */nbproject/
 /amisc/
 /headlands/
+
+/sources/
+code-server.env
+ssh.env

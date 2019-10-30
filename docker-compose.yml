@@ -24,8 +24,8 @@ services:
     container_name: oli-mysql-content
     env_file:
       - ../authoring-server/service.envs
-    ports:
-      - "3377:3306"
+    # ports:
+    #   - "3377:3306"
     volumes:
      - content-db:/var/lib/mysql
     networks:
@@ -90,8 +90,8 @@ services:
     image: oli/haproxy
     container_name: oli-haproxy
     ports:
-      - "80:80"
-      - "443:443"
+      - "8080:80"
+      - "8443:443"
     networks:
       - service-tier
     depends_on:
