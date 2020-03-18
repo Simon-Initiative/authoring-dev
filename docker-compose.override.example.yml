@@ -1,0 +1,17 @@
+version: '3.1'
+services:
+  authoring-server:
+    volumes:
+      - ~/oli/content/course_content_xml:/oli/course_content_xml
+      - ~/oli/content/webcontent:/oli/webcontent
+      - ~/oli/repository:/oli/repository
+      - ~/oli/dtd:/oli/dtd
+      - ~/oli/service_config:/oli/service_config
+
+  web-assets:
+    volumes:
+      - ~/oli/content/webcontent:/oli/webcontent/webcontents
+      - ~/oli/repository:/oli/repository
+      - ~/oli/superactivity:/oli/superactivity
+      - ~/oli/branding:/oli/branding
+      - ~/oli/assets:/oli/assets
