@@ -93,11 +93,11 @@ of directories shared in Docker. In macOS 10.15 Catalina and up users do not hav
        cp service.example.envs service.envs
        # make configuration modifications
        vim service.envs
-      ```
+       ```
     1. Copy and customize docker-compose.override.yml file. (only customize if you chose a different directory other than ~/oli)
-      ```
-      cp docker-compose.override.example.yml docker-compose.override.yml
-      ```
+       ```
+       cp docker-compose.override.example.yml docker-compose.override.yml
+       ```
 1. Create docker images
     * Create a build of authoring-server used for the initial run
 
