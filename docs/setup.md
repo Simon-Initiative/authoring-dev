@@ -7,6 +7,7 @@ This page assumes existing installation of the following software:
 1. [docker](https://www.docker.com/docker-mac)
 1. [git](https://www.atlassian.com/git/tutorials/install-git)
 1. [maven](https://www.mkyong.com/maven/install-maven-on-mac-osx)
+1. [wget](https://www.cyberciti.biz/faq/howto-install-wget-om-mac-os-x-mountain-lion-mavericks-snow-leopard/)
 
 This page assumes macOS as the host operating system.  Some steps may vary on other platforms.
 
@@ -95,9 +96,12 @@ of directories shared in Docker. In macOS 10.15 Catalina and up users do not hav
        vim service.envs
        ```
     1. Copy and customize docker-compose.override.yml file. (only customize if you chose a different directory other than ~/oli)
-       ```
-       cp docker-compose.override.example.yml docker-compose.override.yml
-       ```
+
+      ```
+      cd ~/oli/sources/authoring-dev
+      cp docker-compose.override.example.yml docker-compose.override.yml
+      ```
+
 1. Create docker images
     * Create a build of authoring-server used for the initial run
 
