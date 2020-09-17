@@ -38,7 +38,7 @@ services:
       - ./keycloak-mysql/keycloak.envs
 #    # uncomment for keycloak configuration exporting
 #    volumes:
-#      - /oli/databases/keycloak_dump:/export
+#      - ${HOME}/oli/databases/keycloak_dump:/export
     networks:
       - service-tier
     depends_on:
@@ -56,11 +56,11 @@ services:
       - "8787:8787"  # for remote debugging
       - "9990:9990"  # for remote debugging
     volumes:
-      - /oli/content/course_content_xml:/oli/course_content_xml
-      - /oli/content/webcontent:/oli/webcontent
-      - /oli/repository:/oli/repository
-      - /oli/dtd:/oli/dtd
-      - /oli/service_config:/oli/service_config
+      - ${HOME}/oli/content/course_content_xml:/oli/course_content_xml
+      - ${HOME}/oli/content/webcontent:/oli/webcontent
+      - ${HOME}/oli/repository:/oli/repository
+      - ${HOME}/oli/dtd:/oli/dtd
+      - ${HOME}/oli/service_config:/oli/service_config
     networks:
       - service-tier
     depends_on:
@@ -78,11 +78,11 @@ services:
     image: oli/web-assets-nginx
     container_name: oli-web-assets-nginx
     volumes:
-      - /oli/content/webcontent:/oli/webcontent/webcontents
-      - /oli/repository:/oli/repository
-      - /oli/superactivity:/oli/superactivity
-      - /oli/branding:/oli/branding
-      - /oli/assets:/oli/assets
+      - ${HOME}/oli/content/webcontent:/oli/webcontent/webcontents
+      - ${HOME}/oli/repository:/oli/repository
+      - ${HOME}/oli/superactivity:/oli/superactivity
+      - ${HOME}/oli/branding:/oli/branding
+      - ${HOME}/oli/assets:/oli/assets
     networks:
       - service-tier
   dev.local:
