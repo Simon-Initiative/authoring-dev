@@ -1,7 +1,7 @@
 {
   "id" : "oli_security",
   "realm" : "oli_security",
-  "displayName" : "OLI Security",
+  "displayName" : "OLI Echo",
   "notBefore" : 1540228919,
   "revokeRefreshToken" : false,
   "refreshTokenMaxReuse" : 0,
@@ -3299,7 +3299,7 @@
     "_browser_header.strictTransportSecurity" : "max-age=31536000; includeSubDomains",
     "_browser_header.xFrameOptions" : "SAMEORIGIN",
     "quickLoginCheckMilliSeconds" : "1000",
-    "displayName" : "OLI Security",
+    "displayName" : "OLI Echo",
     "_browser_header.xRobotsTag" : "none",
     "maxFailureWaitSeconds" : "900",
     "minimumQuickLoginWaitSeconds" : "60",
