@@ -106,10 +106,11 @@ div.kc-logo-text span {
 
 #kc-header-wrapper {
     font-size: 29px;
+    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 3px;
     line-height: 1.2em;
-    padding: 62px 10px 20px;
+    padding: 130px 10px 20px;
     white-space: normal;
 }
 
