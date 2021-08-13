@@ -1,4 +1,4 @@
-FROM jboss/wildfly:latest
+FROM jboss/wildfly:14.0.1.Final
 MAINTAINER Raphael Gachuhi, oli.cmu.edu
 
 ENV DEPLOYMENT_DIR ${JBOSS_HOME}/standalone/deployments/
